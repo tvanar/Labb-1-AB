@@ -1,18 +1,16 @@
 D = 5;
 alpha = 8/10;
 
-zeroes = [1, zeros(1, D), alpha];
+zeroes = [1,0,0,0,0,alpha];
 poles = 1;
 
 [H, w] = freqz(zeroes,poles, 'half');
 
 
-
-figure(1)   % Plotting H(z)
-subplot(2,1,2);
+figure(1)
 zplane(zeroes, poles);
 
-subplot(2,1,1);
+figure(2)   % Plotting H(z)
 plot(w, abs(H));
 title('Magnitude Response');
 xlabel('Frequency (rad/sample)');
@@ -22,11 +20,10 @@ ylabel('|H(e^{jω})|');
 
 [H_i, w_i] = freqz(poles, zeroes, 'half');
 
-figure(2)
-subplot(2,1,2);
+figure(3)
 zplane(poles, zeroes);
 
-subplot(2,1,1);
+figure(4)
 plot(w_i, abs(H_i));
 title('Magnitude Response');
 xlabel('Frequency (rad/sample)');
